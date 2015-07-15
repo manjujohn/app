@@ -1,0 +1,11 @@
+<form>
+    <div class="form-group">
+        <label for="firstname">First Name</label>
+        <input type="text" class="form-control" id="firstname" placeholder="First name" value="{{display.firstname}}" name="firstname" ng-model="display.firstname">
+    </div>
+    <div class="form-group">
+        <label for="lastname">Last Name</label>
+        <input type="text" class="form-control" id="lastname" name="lastname" placeholder="Last name" value="{{display.lastname}}" ng-model="display.lastname">
+    </div>
+    <button type="submit" class="btn btn-primary" ng-click="saveDetails(display,item,err)">Save</button>
+</form>
