@@ -2,7 +2,7 @@ app.directive("getId", function($window, usersData) {
     return {
         restrict: 'E',
         scope: {
-            display: '=',
+            display: '=info',
             item: '=',
             err: '='
         },
@@ -11,10 +11,17 @@ app.directive("getId", function($window, usersData) {
 
 
             scope.saveDetails = function(display, item) {
-                //console.log("id"+display.id);
+               
                 console.log(display);
                 if (display.id != "") {
-                    usersData.saveDetails(display)
+
+                	usersData.update({ id: display.id },display,function(data){
+                		item.push(data);
+                		 scope.err = "Updated succesfully";
+                    	 console.log(data);
+                    	 window.location.reload();
+                	});
+                    /*usersData.saveDetails(display)
                         .success(function(data) {
                             
                             scope.err = "Updated succesfully";
@@ -22,10 +29,16 @@ app.directive("getId", function($window, usersData) {
                         }).
                     error(function(error) {
                         console.log(error.message);
-                    });
+                    });*/
 
                 } else {
-                    usersData.addDetails(display)
+                	usersData.save(display,function(data){
+                		item.push(display);
+                		console.log("Inserted successfully");
+                		scope.err = "Inserted successfully";
+
+                	})
+                    /*usersData.addDetails(display)
                         .success(function(data) {
                             console.log(item);
                             item.push(display);
@@ -35,7 +48,7 @@ app.directive("getId", function($window, usersData) {
                     error(function(error) {
                         console.log(error.message);
                     });
-
+*/
 
                 }
 

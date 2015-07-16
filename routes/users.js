@@ -90,7 +90,7 @@ router.route('/:id')
             user.save(function(err) {
                 if (err) res.send(err);
 
-                res.json({ message: 'Person data updated!' });
+                res.json(user);
             });    
         	
         } else {

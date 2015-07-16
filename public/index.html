@@ -1,7 +1,9 @@
 <head>
     <link rel="stylesheet" type="text/css" href="bootstrap-3.3.4-dist/css/bootstrap.css">
-   <script src="bower_components/angular/angular.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+    <script src="bower_components/angular/angular.min.js"></script>
     <script src="bower_components/angular-resource/angular-resource.js"></script>
+
     <script src="js/main.js"></script>
     <script src="js/controller.js"></script>
     <script src="js/factory.js"></script>
@@ -36,7 +38,7 @@
                 <div class="col-md-9">
                     <div>
                         <ng-view>
-                            <get-id display="details" item="items" err="err"></get-id>
+                            <get-id info="details" item="items" err="err"></get-id>
                         </ng-view>
                     </div>
                 </div>

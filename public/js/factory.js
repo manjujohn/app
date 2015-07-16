@@ -1,6 +1,31 @@
 
 app.factory('usersData', ['$http','$resource', function($http, $resource) {
-   
+
+	return $resource('/api/users/:id', {
+	    id: '@_id'
+	}, {
+	    update: {
+	        method: 'PUT',
+	        params: {
+	            id: 'id'
+	        }
+	    },
+	    getDetails : {
+	    	method : 'GET',
+	    	isArray: true
+	    },
+	    get: {
+	    	method : 'GET',
+	    	 params: {
+	            id: 'id'
+	        }
+	    },
+	    save : {
+	    	method : 'POST'
+	    }
+
+	});
+  /* 
     var usersData= {};
 
   usersData.getDetails = function () {
@@ -14,22 +39,11 @@ app.factory('usersData', ['$http','$resource', function($http, $resource) {
   }
   usersData.saveDetails = function (display){
 
-  		//return $http.put("/api/users/"+display.id,display);
-	return $resource('/api/users:id', {
-	    bookId: '@display.id'
-	}, {
-	    saveDetails: {
-	        method: 'PUT',
-	        params: {
-	            bookId: '@display.id'
-	        },
-	        isArray: false
-	    }
-
-	});
+  		return $http.put("/api/users/"+display.id,display);
+	
 
   }
    return usersData;
-
+*/
 }]);
 

@@ -5,13 +5,18 @@ angular.module('MyApp')
     	$scope.items; 
     	$scope.idSelected ="";
     	$scope.details= {
-		firstname: '',
-		lastname: '',
-		id: ''
+			firstname: '',
+			lastname: '',
+			id: ''
 		};
-		$scope.err = "";	   
+		$scope.err = "";
+
+		usersData.getDetails(function(data){
+			$scope.items = data;
+			console.log("data:",data);
+		})
 		
-    	usersData.getDetails()
+    	/*usersData.getDetails()
     		.success(function(data){
 
     			$scope.items = data;
@@ -19,27 +24,34 @@ angular.module('MyApp')
     		}).
             error(function(error) {
                 console.log(error.message);
-            });
+            });*/
          $scope.getId = function (items)
          {
          	 $scope.idSelected = items._id;
-               	usersData.getId(items._id)
-         		.success(function(data){
-         			$scope.details.id = data._id;
+
+
+         	 usersData.get({ id: items._id }, function(data) {
+         	    	$scope.details.id = data._id;
          			$scope.details.firstname = data.firstname;
          			$scope.details.lastname = data.lastname;
+         	  });
+           		//   usersData.getId({id :items._id})
+         		// .success(function(data){
+         		// 	$scope.details.id = data._id;
+         		// 	$scope.details.firstname = data.firstname;
+         		// 	$scope.details.lastname = data.lastname;
 
          			
-         		}).
-         		error(function(error){
-         			console.log(error.message);
-         		})
+         		// }).
+         		// error(function(error){
+         		// 	console.log(error.message);
+         		// })
          }
          $scope.addDetails= function(){
          	$scope.details.firstname ="";
          	$scope.details.lastname ="";
          	$scope.idSelected ="";
-         	//angular.element("#firstname").focus();
+         	angular.element("#firstname").focus();
      
 
          }
