@@ -35,17 +35,17 @@ angular.module('MyApp')
          			$scope.details.firstname = data.firstname;
          			$scope.details.lastname = data.lastname;
          	  });
-           		//   usersData.getId({id :items._id})
-         		// .success(function(data){
-         		// 	$scope.details.id = data._id;
-         		// 	$scope.details.firstname = data.firstname;
-         		// 	$scope.details.lastname = data.lastname;
+           		/*  usersData.getId({id :items._id})
+         		.success(function(data){
+         			$scope.details.id = data._id;
+         			$scope.details.firstname = data.firstname;
+         			$scope.details.lastname = data.lastname;
 
          			
-         		// }).
-         		// error(function(error){
-         		// 	console.log(error.message);
-         		// })
+         		}).
+         		error(function(error){
+         			console.log(error.message);
+         		})*/
          }
          $scope.addDetails= function(){
          	$scope.details.firstname ="";
